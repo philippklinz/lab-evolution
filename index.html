@@ -1,49 +1,47 @@
 <!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Wie entstehen Vielfalt, Anpassung und gemeinsame Abstammung?">
-<title>Evolution des Lebens · Learning Lab 04</title>
-<link rel="stylesheet" href="modern-objectivity.css">
-<style>
-:root{color-scheme:light;--paper:var(--mo-bg);--ink:var(--mo-text);--graphite:var(--mo-rail);--signal:var(--mo-accent);--edge:var(--mo-border);--muted:var(--mo-muted)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "Liberation Sans",Arial,sans-serif}
-a{color:inherit;text-underline-offset:3px}:focus-visible{outline:3px solid var(--signal);outline-offset:4px}
-header{background:var(--graphite);color:#e9f0ec;border-bottom:3px solid var(--signal)}.top{max-width:1120px;margin:auto;padding:19px 28px;display:flex;justify-content:space-between;gap:20px;align-items:center;font:12px "Liberation Mono",monospace;letter-spacing:.04em}.top a{color:#b5ddd6;text-decoration:none}.top a:hover{text-decoration:underline}
-main{max-width:1120px;margin:auto;padding:74px 28px 110px}.eyebrow{font:11px "Liberation Mono",monospace;letter-spacing:.15em;text-transform:uppercase;color:#007973}.hero{padding-bottom:64px;border-bottom:1px solid var(--edge)}h1{font-size:clamp(42px,7vw,86px);font-weight:400;letter-spacing:-.065em;line-height:1.06;max-width:860px;margin:22px 0}h1 strong{font-weight:700}.lead{max-width:800px;font:22px/1.55 "Liberation Serif",Georgia,serif;color:var(--muted)}.note{margin-top:28px;border-left:3px solid var(--signal);padding:11px 17px;background:#fff;font-size:13px;max-width:760px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;padding-top:52px}.panel{min-width:0}h2{font-size:28px;font-weight:400;line-height:1.2;letter-spacing:-.04em;margin:12px 0 23px}ul{padding:0;list-style:none;margin:0}li{display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--edge);font-size:15px}.index{font:11px "Liberation Mono",monospace;color:#007e79;padding-top:5px;min-width:25px}
-footer{max-width:1120px;margin:auto;border-top:1px solid var(--edge);padding:24px 28px 40px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:12px "Liberation Mono",monospace;color:var(--muted)}footer a{color:#006f6b}
-@media(max-width:720px){main{padding:52px 20px 70px}.grid{grid-template-columns:1fr;gap:42px}.top,footer{padding-left:20px;padding-right:20px}.lead{font-size:19px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-/* Modern Objectivity reference v0.1: stage-specific adjustments. */
-:focus-visible{outline:3px solid var(--mo-focus)!important}
-.note{border-radius:var(--mo-radius-sm);box-shadow:var(--mo-shadow)}
-.eyebrow{color:var(--mo-accent)}
-footer a{color:var(--mo-accent)}
-</style>
-</head>
-<body>
-<header><div class="top"><span>LEARNING LAB / 04</span><a href="https://github.com/philippklinz/lab-evolution">SOURCE / GITHUB</a></div></header>
-<main>
-<section class="hero"><div class="eyebrow">INTERAKTIVES WISSENSLABOR / KONZEPTPHASE</div>
-<h1><strong>Evolution des Lebens</strong></h1>
-<p class="lead">Wie entstehen Vielfalt, Anpassung und gemeinsame Abstammung?</p>
-<p>Variation, Selektion, Drift, Vererbung, Artbildung, Stammbäume und Großereignisse in der Geschichte des Lebens.</p>
-<div class="note"><strong>Stand:</strong> Dieses Labor ist angelegt, aber die interaktiven Schaubilder sind noch nicht implementiert. Die untenstehenden Inhalte sind Themen und geplante Experimente, keine bereits funktionierenden Features.</div>
-</section>
-<div class="grid">
-<section class="panel"><div class="eyebrow">RESEARCH QUESTIONS</div><h2>Fragen, die wir untersuchen wollen</h2><ul><li><span class="index">01</span><span>Wie unterscheiden sich Mutation, Selektion und genetische Drift?</span></li>
-<li><span class="index">02</span><span>Wie ändern sich Genhäufigkeiten in Populationen?</span></li>
-<li><span class="index">03</span><span>Was zeigen Stammbäume und ihre Unsicherheiten?</span></li>
-<li><span class="index">04</span><span>Warum ist Evolution kein zielgerichteter Fortschrittsprozess?</span></li></ul></section>
-<section class="panel"><div class="eyebrow">FUTURE EXHIBITS</div><h2>Geplante Experimente</h2><ul><li><span class="index">01</span><span>Interaktive Populationssimulation mit veränderbaren Bedingungen</span></li>
-<li><span class="index">02</span><span>Stammbaum-Explorer mit Zeitmaßstab</span></li>
-<li><span class="index">03</span><span>Vergleich von Homologie und konvergenter Evolution</span></li></ul></section>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f7f7"><meta name="description" content="LAB 04: Evolution des Lebens interaktiv verstehen – Selektion, Drift, Artbildung, Stammbäume, LUCA, Übergänge und Evolutionsbelege.">
+<title>Evolution des Lebens — Learning Lab 04</title>
+<link rel="stylesheet" href="modern-objectivity.css"><link rel="stylesheet" href="evolution.css"></head>
+<body><a class="ev-skip" href="#main">Zum Inhalt springen</a>
+<header class="ev-header"><div class="ev-wrap ev-header-inner"><a class="ev-brand" href="index.html"><span aria-hidden="true">◈</span><span><strong>EVOLUTION DES LEBENS</strong><small>LEARNING LAB / 04</small></span></a>
+<nav class="ev-nav" aria-label="Labornavigation"><a href="index.html" aria-current="page">Übersicht</a><a href="01_populationen.html">01 Populationen</a><a href="02_artbildung.html">02 Artbildung</a><a href="03_stammbaeume.html">03 Stammbäume</a><a href="04_baum_des_lebens.html">04 Baum des Lebens</a><a href="05_uebergaenge.html">05 Übergänge</a><a href="06_evidenz.html">06 Evidenz</a><a class="ev-home" href="https://philippklinz.github.io/learning-labs/">Alle Labore ↗</a></nav>
+</div></header>
+<main id="main"><div class="ev-wrap">
+<section class="ev-hero"><div><span class="ev-eye">LAB 04 / EVOLUTION DES LEBENS</span><h1>Evolution hat<br><em>keinen Plan.</em></h1>
+<p>Wie entstehen Vielfalt, Anpassung und gemeinsame Abstammung? In diesem Labor kannst du selbst beobachten, wie Variation, Vererbung, Selektion und Zufall Populationen verändern – und wie wir die Geschichte des Lebens rekonstruieren.</p>
+<div class="ev-tags"><span>6 INTERAKTIVE UNTERLABORE</span><span>SELEKTION &amp; DRIFT</span><span>STAMMBÄUME</span><span>ZEIT &amp; EVIDENZ</span></div>
+<div class="ev-actions"><a class="ev-action primary" href="01_populationen.html">Erstes Experiment starten →</a><a class="ev-action" href="#unterlabore">Unterlabore entdecken</a></div></div>
+<figure class="ev-hero-graphic"><svg viewBox="0 0 570 390" aria-hidden="true" fill="none">
+<rect width="570" height="390" fill="#102832"/>
+<defs><pattern id="hero-grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" stroke="#9ebbb5" stroke-opacity=".10" fill="none"/></pattern></defs>
+<rect width="570" height="390" fill="url(#hero-grid)"/>
+<path d="M284 341V262L180 192 121 104M180 192L248 116M284 262l116-81 67-89M400 181L334 99" stroke="#8bd8c5" stroke-width="6" stroke-linecap="round"/>
+<path d="M284 341l-50-62M180 192l-81 13M400 181l65 51" stroke="#b7a184" stroke-width="3" stroke-dasharray="6 9"/>
+<g fill="#1c5559" stroke="#a0dfd0" stroke-width="4"><circle cx="284" cy="341" r="18"/><circle cx="284" cy="262" r="13"/><circle cx="180" cy="192" r="13"/><circle cx="400" cy="181" r="13"/><circle cx="121" cy="104" r="17"/><circle cx="248" cy="116" r="17"/><circle cx="467" cy="92" r="17"/><circle cx="334" cy="99" r="17"/></g>
+<g fill="#e5b58c"><circle cx="121" cy="104" r="7"/><circle cx="248" cy="116" r="7"/><circle cx="467" cy="92" r="7"/><circle cx="334" cy="99" r="7"/></g>
+<g fill="#a9cec6" font-family="monospace" font-size="11"><text x="36" y="38">FIG. 004 / BRANCHING LIFE</text><text x="282" y="374" text-anchor="middle">GEMEINSAME ABSTAMMUNG</text><text x="440" y="38">NOT TO SCALE</text></g>
+</svg><figcaption>SCHEMATISCHE VERZWEIGUNG · KEINE TELEOLOGISCHE ENTWICKLUNGSLEITER</figcaption></figure></section></div>
+<section class="ev-section alt" id="unterlabore"><div class="ev-wrap"><div class="ev-section-heading"><div><span class="ev-eye">01 / UNTERLABORE</span><h2>Sechs Wege, Evolution zu verstehen.</h2></div><p>Von zufälligen Frequenzänderungen im Kleinen bis zu Verwandtschaftsbelegen über Milliarden Jahre. Jedes Modul funktioniert unabhängig.</p></div>
+<div class="ev-card-grid"><article class="ev-card"><div class="ev-card-art"><svg viewBox="0 0 260 116" aria-hidden="true" fill="none"><path d="M30 77L66 47 101 84 133 36 170 52 209 24 239 37" stroke="#78dcc1" stroke-width="4" fill="none"/><path d="M30 97h209M30 18v79" stroke="#7cb0ad" stroke-width="1.5"/><g fill="#78dcc1"><circle cx="66" cy="47" r="4"/><circle cx="133" cy="36" r="4"/><circle cx="209" cy="24" r="4"/></g></svg></div><div class="ev-card-body"><span class="ev-eye">UNTERLABOR 01 / MODELLPOPULATION</span><h3>Variation, Selektion & Drift</h3><p>Wie verändert sich eine Population, wenn Fitnessunterschiede und Zufall gleichzeitig wirken? Allelfrequenzen über 100 Generationen simulieren.</p></div><div class="ev-card-foot"><a href="01_populationen.html">Unterlabor öffnen ↗</a><span class="ev-tag">INTERAKTIV</span></div></article>
+<article class="ev-card"><div class="ev-card-art"><svg viewBox="0 0 260 116" aria-hidden="true" fill="none"><path d="M25 57q38-15 67 0t55 0" stroke="#72d7c0" stroke-width="4" fill="none"/><path d="M160 56q41-17 75 0" stroke="#deb285" stroke-width="4" fill="none"/><path d="M100 56h55m-12-9 12 9-12 9" stroke="#d0e1d3" stroke-width="2" fill="none"/><circle cx="62" cy="57" r="26" stroke="#70c2b0" stroke-width="2"/><circle cx="201" cy="57" r="26" stroke="#daa77e" stroke-width="2"/></svg></div><div class="ev-card-body"><span class="ev-eye">UNTERLABOR 02 / ZWEI HABITATE</span><h3>Genfluss & Artbildung</h3><p>Zwei Populationen in verschiedenen Lebensräumen: Migration, lokale Selektion und Zufall verändern ihre genetischen Unterschiede.</p></div><div class="ev-card-foot"><a href="02_artbildung.html">Unterlabor öffnen ↗</a><span class="ev-tag">INTERAKTIV</span></div></article>
+<article class="ev-card"><div class="ev-card-art"><svg viewBox="0 0 260 116" aria-hidden="true" fill="none"><path d="M129 94V57M129 57L70 24M129 57L196 24M70 24H44M70 24H89M196 24h-22m22 0h23" stroke="#a3d6c5" stroke-width="4" fill="none"/><g fill="#e7be99"><circle cx="44" cy="24" r="7"/><circle cx="89" cy="24" r="7"/><circle cx="174" cy="24" r="7"/><circle cx="219" cy="24" r="7"/></g></svg></div><div class="ev-card-body"><span class="ev-eye">UNTERLABOR 03 / ABSTAMMUNG</span><h3>Stammbäume & Homologie</h3><p>Erkenne, warum ähnliche Körperformen täuschen können. Drei Stammbäume mit einer Merkmalsmatrix vergleichen.</p></div><div class="ev-card-foot"><a href="03_stammbaeume.html">Unterlabor öffnen ↗</a><span class="ev-tag">INTERAKTIV</span></div></article>
+<article class="ev-card"><div class="ev-card-art"><svg viewBox="0 0 260 116" aria-hidden="true" fill="none"><path d="M56 86L117 38 203 21M117 38l90 69" stroke="#79d8c3" stroke-width="4" fill="none"/><path d="M203 21Q243 63 207 107" stroke="#d9ac83" stroke-width="3" stroke-dasharray="5 5" fill="none"/><g fill="#7ad0bd"><circle cx="56" cy="86" r="10"/><circle cx="117" cy="38" r="7"/><circle cx="203" cy="21" r="10"/><circle cx="207" cy="107" r="10"/></g></svg></div><div class="ev-card-body"><span class="ev-eye">UNTERLABOR 04 / GEMEINSAME WURZELN</span><h3>LUCA & Baum des Lebens</h3><p>Die gemeinsame Abstammung zellulären Lebens, Archaeen, Bakterien, Eukaryoten und laterale Genbeziehungen.</p></div><div class="ev-card-foot"><a href="04_baum_des_lebens.html">Unterlabor öffnen ↗</a><span class="ev-tag">INTERAKTIV</span></div></article>
+<article class="ev-card"><div class="ev-card-art"><svg viewBox="0 0 260 116" aria-hidden="true" fill="none"><path d="M27 85H236" stroke="#8eb9ad" stroke-width="2"/><path d="M63 20v66m57-44v44m58-22v22m34-7v7" stroke="#86d9c5" stroke-width="3"/><g fill="#dcb38b"><circle cx="63" cy="20" r="9"/><circle cx="120" cy="42" r="9"/><circle cx="178" cy="64" r="9"/><circle cx="212" cy="79" r="8"/></g></svg></div><div class="ev-card-body"><span class="ev-eye">UNTERLABOR 05 / ERDGESCHICHTE</span><h3>Große Übergänge</h3><p>Sauerstoffanreicherung, komplexe Zellen, Vielzelligkeit und Landbesiedlung in der Erdgeschichte einordnen.</p></div><div class="ev-card-foot"><a href="05_uebergaenge.html">Unterlabor öffnen ↗</a><span class="ev-tag">INTERAKTIV</span></div></article>
+<article class="ev-card"><div class="ev-card-art"><svg viewBox="0 0 260 116" aria-hidden="true" fill="none"><rect x="32" y="21" width="196" height="77" rx="4" fill="none" stroke="#91cfc0" stroke-width="2"/><path d="M48 38h94M48 55h115M48 73h74" stroke="#a1caba" stroke-width="3"/><circle cx="199" cy="70" r="16" fill="#2b746f" stroke="#addcca" stroke-width="2"/><path d="M191 70l6 6 11-13" stroke="#e4d9ac" stroke-width="3" fill="none"/></svg></div><div class="ev-card-body"><span class="ev-eye">UNTERLABOR 06 / EVIDENZLABOR</span><h3>Wie beweisen wir Evolution?</h3><p>Sechs Forschungsbeispiele: Entscheide, welche Schlussfolgerung ein Experiment oder ein Fossil tatsächlich stützt.</p></div><div class="ev-card-foot"><a href="06_evidenz.html">Unterlabor öffnen ↗</a><span class="ev-tag">INTERAKTIV</span></div></article></div></div></section>
+<section class="ev-section"><div class="ev-wrap"><div class="ev-section-heading"><div><span class="ev-eye">02 / WISSENSCHAFTLICHE GRUNDLAGEN</span><h2>Welche Fragen stellen wir?</h2></div></div>
+<div class="ev-plain-grid">
+<div class="ev-plain"><span class="ev-eye">01 / MECHANISMUS</span><strong>Was verändert Häufigkeiten?</strong><p>Mutation erzeugt neue erbliche Varianten; Selektion und Drift ändern ihre Verteilung. Migration kann Varianten zwischen Populationen übertragen.</p></div>
+<div class="ev-plain"><span class="ev-eye">02 / ABSTAMMUNG</span><strong>Was sagt der Stammbaum aus?</strong><p>Stammbäume sind aus Merkmalen und Genen erschlossene Modelle. Ähnliche Körperformen können unabhängig entstanden sein.</p></div>
+<div class="ev-plain"><span class="ev-eye">03 / GESCHICHTE</span><strong>Welche Spuren bleiben?</strong><p>Fossilien, Genomdaten, Geochemie und direkte Beobachtung ergänzen einander. LUCA war nicht notwendigerweise das erste Leben.</p></div>
 </div>
-<section class="note" style="margin-top:45px"><strong>Wissenschaftliche Einordnung:</strong> Evolution ist kein lineares Fortschrittsnarrativ; LUCA ist nicht mit dem ersten Leben gleichzusetzen. Stammbäume sind evidenzbasierte Rekonstruktionen.</section>
-</main>
-<footer><span>STANDALONE · STATIC HTML · <a href="https://philippklinz.github.io/modern-objectivity-style/">MODERN OBJECTIVITY ↗</a></span><span><a href="README.md">README</a> · <a href="AGENTS.md">AGENTS</a> · <a href="LICENSE">GPL v2.0</a></span></footer>
-</body>
-</html>
+<div class="ev-info warning" style="margin-top:25px"><strong>Was die Experimente nicht sind</strong><p>Unsere Populationsmodelle verwenden bewusst vereinfachte Allelfrequenzen und zufällige Stichproben, keine realen Ökosystemdaten. Ein Stammbaum-Experiment mit drei Übungsmerkmalen ist keine wissenschaftliche phylogenomische Analyse. Evolution ist kein zielgerichtetes Fortschrittsprogramm.</p></div>
+<div class="ev-scientific"><strong>Grundlagen:</strong> <a href="https://evolution.berkeley.edu/evolution-101/">UC Berkeley · Evolution 101</a> · <a href="https://www.nhm.ac.uk/discover/convergent-evolution.html">Natural History Museum · Konvergenz</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11071111/">Major Biological Innovations (2024)</a>. Jedes Unterlabor enthält eigene fachliche Quellen und Modellgrenzen.</div>
+</div></section>
+<section class="ev-section alt"><div class="ev-wrap"><div class="ev-section-heading"><div><span class="ev-eye">03 / WISSENSREISE</span><h2>Aus der Chemie, durch die Zeit.</h2></div><p>Die Links sind Lernempfehlungen, keine technischen Abhängigkeiten.</p></div>
+<div class="ev-plain-grid"><div class="ev-plain"><span class="ev-eye">LAB 02 / VORHER</span><strong>Abiogenese</strong><p>Wie könnten aus unbelebter Chemie erste vererbbare Systeme hervorgegangen sein?</p><a href="https://philippklinz.github.io/lab-abiogenesis/">Abiogenese öffnen ↗</a></div>
+<div class="ev-plain"><span class="ev-eye">LAB 03 / VERTIEFUNG</span><strong>DNA und RNA</strong><p>Wie speichern, kopieren und übersetzen heutige Zellen Information?</p><a href="https://philippklinz.github.io/lab-molecular-biology/">Molekularbiologie öffnen ↗</a></div>
+<div class="ev-plain"><span class="ev-eye">LAB 05 / DANACH</span><strong>Entstehung des Menschen</strong><p>Wie lässt sich die Abstammungsgeschichte von Menschen und ihren Verwandten untersuchen?</p><a href="https://philippklinz.github.io/lab-human-origins/">LAB 05 öffnen ↗</a></div></div>
+</div></section></main>
+<footer class="ev-footer"><div class="ev-wrap ev-footer-inner"><span>LEARNING LAB 04 · EVOLUTION DES LEBENS<br>STATIC BY DESIGN · OPEN ACCESS · NO ACCOUNTS · NO TRACKING</span><span><a href="https://philippklinz.github.io/modern-objectivity-style/">Modern Objectivity ↗</a> · <a href="https://github.com/philippklinz/lab-evolution">GitHub ↗</a> · <a href="LICENSE">GPL v2.0</a></span></div></footer>
+</body></html>
