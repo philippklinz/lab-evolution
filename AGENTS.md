@@ -17,11 +17,14 @@ Variation, Selektion, Drift, Vererbung, Artbildung, Stammbäume und Großereigni
 - Was zeigen Stammbäume und ihre Unsicherheiten?
 - Warum ist Evolution kein zielgerichteter Fortschrittsprozess?
 
-### Candidate interactive exhibits — not yet implemented
+### Six implemented interactive modules (V0.1)
 
-- Interaktive Populationssimulation mit veränderbaren Bedingungen
-- Stammbaum-Explorer mit Zeitmaßstab
-- Vergleich von Homologie und konvergenter Evolution
+- 01: `01_populationen.html` with `evolution-labs.js` — haploid biallelic Wright-Fisher model, selection, symmetric mutation, seeded binomial drift.
+- 02: `02_artbildung.html` — two habitats, opposing selection, migration, drift. **No real speciation is simulated**.
+- 03: `03_stammbaeume.html` — four taxa, three toy characters, Fitch-parsimony score over three unrooted quartets, homology/convergence quiz.
+- 04: `04_baum_des_lebens.html` with `evolution-later.js` — conceptual LUCA, bacteria, archaea and eukaryote lineage with optional reticulation.
+- 05: `05_uebergaenge.html` — five major biological transitions as approximate markers in Earth history and five comprehension questions.
+- 06: `06_evidenz.html` — six original research cases with interactive interpretation checks.
 
 ## Scientific responsibility
 
@@ -71,3 +74,16 @@ Modern Objectivity, as documented in the provisional Apperception Machinery Bran
 ## Modern Objectivity implementation
 
 Use the **locally vendored** `modern-objectivity.css` (the v0.1 draft [practical style kit](https://philippklinz.github.io/modern-objectivity-style/), source SHA `c6af71a8688b9001313d19a642e8f308fa463280`). Preserve the vendor stylesheet as an exact copy; make stage-specific changes in the local page styles and prefer `--mo-*` semantic tokens. This is a reference style, **not a universal visual mandate**. Keep the standalone site functioning with no CDN dependencies. If upgrading the kit, compare behavior and update attribution/version notes.
+
+## Binding model contracts and automated QA
+
+- **Numerical models:** Maintain seeded PRNG determinism for identical inputs. Allele A fitness is 1+s vs a fitness 1, so selection maps p to p(1+s)/(1+p*s). Mutation maps p to p(1−μ)+(1−p)μ. Sample a binomial N haploid allele count. N is NOT effective population size for an empirical diploid system.
+- **Two habitats:** use a simultaneous update from the **old** pair of frequencies after local selection and symmetrical migration m. Do not introduce update-order bias. No speciation threshold can be inferred from a two-allele model.
+- **Phylogeny:** three deliberately artificial binary characters, four taxa, three unrooted quartet alternatives. Fitch scores must be computed, not hardcoded. A dolphin's streamlined shape compared to a shark is convergence, not evidence of mammalian ancestry in a shark.
+- **Life tree:** LUCA is NOT the first organism. Horizontal gene transfer and bacterial mitochondrial ancestry complicate a tree. Branches and location are symbolic; no exact temporal coordinates.
+- **Major transitions:** never claim one origin of multicellularity or an exact single date for eukaryogenesis, oxygenic photosynthesis, land plants or tetrapods. These are repeated or prolonged phenomena.
+- **Evidence:** each challenge has exactly one factually supported answer. Keep links to cited primary papers; no invented publications or absolute interpretations.
+- **Layout:** no horizontal-padding resets on `.ev-wrap`; section spacing uses vertical padding only. `grid-template-columns:minmax(0,...)`, `min-width:0`, responsive breakpoints. Never mask overflow globally.
+- **Automated tests:** `tests/layout-check.mjs` (all 7 pages at 12 viewport widths) and `tests/interactions-check.mjs` (all six models) run in `.github/workflows/lab-04-checks.yml`. If CI is red, do not claim completion.
+- Do not silently modify the vendored `modern-objectivity.css`, introduce tracking/network calls, or couple runtime to other Learning Lab repos.
+- Scientific citation URLs and their experimental implications must be checked before extending source-derived claims. Playwright checks implementation only, **not** scientific truth.
