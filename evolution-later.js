@@ -35,21 +35,60 @@ function treeOfLife(){
  };
  const bs=[...document.querySelectorAll('[data-node]')];let selected='luca',connections=false;
  function diagram(){
-  const edges=[
-    '<path d="M94 190H179L255 108H424" fill="none" stroke="#8fdac8" stroke-width="4"/>',
-    '<path d="M179 190L286 235H421" fill="none" stroke="#9ec5bd" stroke-width="4"/>',
-    '<path d="M315 223L428 289H470" fill="none" stroke="#9ec5bd" stroke-width="4"/>'
+  // Shared coordinates make every visible branch terminate at a real node.
+  // The archaeal stem and the eukaryotic host lineage share a junction;
+  // this is conceptual, not a fully resolved phylogenomic reconstruction.
+  const locations={
+    luca:{x:100,y:174,r:20},
+    bacteria:{x:510,y:87,r:14},
+    archaea:{x:510,y:193,r:14},
+    euk:{x:510,y:286,r:14},
+    primary:{x:215,y:174},
+    archaeal:{x:340,y:240}
+  };
+  const branches=[
+    {name:'luca-primary',from:'luca',to:'primary',d:'M100 174 L215 174',color:'#89d9c5'},
+    {name:'primary-bacteria',from:'primary',to:'bacteria',d:'M215 174 L335 87 L510 87',color:'#89d9c5'},
+    {name:'primary-archaeal',from:'primary',to:'archaeal',d:'M215 174 L340 240',color:'#a1c7c1'},
+    {name:'archaeal-archaea',from:'archaeal',to:'archaea',d:'M340 240 L401 193 L510 193',color:'#a1c7c1'},
+    {name:'archaeal-euk',from:'archaeal',to:'euk',d:'M340 240 L415 286 L510 286',color:'#a1c7c1'}
   ];
-  if(connections)edges.push('<path d="M424 108Q560 105 498 273" fill="none" stroke="#e4ad86" stroke-width="3" stroke-dasharray="7 7"/><path d="M490 262l8 11 8-13" fill="none" stroke="#e4ad86" stroke-width="2"/>'+
-    '<path d="M310 225Q360 167 404 129" fill="none" stroke="#79b6d1" stroke-width="2.5" stroke-dasharray="4 7"/>');
-  const points=[['luca',94,190,'LUCA'],['bacteria',466,108,'BAKTERIEN'],['archaea',461,235,'ARCHAEEN'],['euk',510,289,'EUKARYOTEN']];
-  const labels=points.map(([id,x,y,label])=>{
-    const on=id===selected,r=id==='luca'?20:14;
-    return '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+(on?'#f1c99f':'#5dbeb2')+'" stroke="'+(on?'#fbe2c2':'#b2e5d8')+'" stroke-width="2"/>'+
-    svgText(x+(id==='luca'?0:0),y-(id==='luca'?30:27),label,12,on?'#f9deb5':'#d1e7de');
+  const edges=branches.map(edge=>
+    '<path data-life-edge="'+edge.name+'" data-from="'+edge.from+'" data-to="'+edge.to+
+    '" d="'+edge.d+'" fill="none" stroke="'+edge.color+
+    '" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>'
+  );
+  let additional='';
+  if(connections){
+    // Curved orange line: bacterial endosymbiont contributing to eukaryotes.
+    // Blue dashed line: purely illustrative lateral gene exchange.
+    additional=
+      '<path data-life-network="endosymbiosis" d="M510 87 C598 91 604 248 524 282"'+
+      ' fill="none" stroke="#e4ad86" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round"/>'+
+      '<path d="M525 270 L524 282 L537 279" fill="none" stroke="#e4ad86" stroke-width="2.5" stroke-linejoin="round"/>'+
+      '<path data-life-network="hgt-example" d="M414 87 Q373 143 340 240"'+
+      ' fill="none" stroke="#79b6d1" stroke-width="2.5" stroke-dasharray="4 7" stroke-linecap="round"/>';
+  }
+  const labels=[
+    ['luca','LUCA'],
+    ['bacteria','BAKTERIEN'],
+    ['archaea','ARCHAEEN'],
+    ['euk','EUKARYOTEN']
+  ].map(([id,label])=>{
+    const {x,y,r}=locations[id],on=id===selected;
+    return '<circle data-life-node="'+id+'" cx="'+x+'" cy="'+y+'" r="'+r+
+      '" fill="'+(on?'#f1c99f':'#5dbeb2')+'" stroke="'+
+      (on?'#fbe2c2':'#b2e5d8')+'" stroke-width="2"/>'+
+      svgText(x,y-(id==='luca'?31:29),label,12,on?'#f9deb5':'#d1e7de');
   }).join('');
-  $('life-tree').innerHTML=background+edges.join('')+labels+
-   svgText(320,324,connections?'GELB: BAKTERIELLE SYMBIOSE · BLAU: BEISPIEL HGT':'VERTIKALE LINIE · VEREINFACHTE ABSTAMMUNG',11,'#a8d3ca');
+  const junctions=['primary','archaeal'].map(id=>
+    '<circle data-life-junction="'+id+'" cx="'+locations[id].x+
+    '" cy="'+locations[id].y+'" r="4" fill="#9acdc3"/>'
+  ).join('');
+  $('life-tree').innerHTML=background+edges.join('')+additional+junctions+labels+
+    svgText(320,325,connections?
+      'ORANGE: ENDOSYMBIOSE · BLAU: BEISPIEL GENÜBERTRAGUNG':
+      'VEREINFACHTE ABSTAMMUNG · KEINE ZEITACHSE',11,'#a8d3ca');
  }
  function render(){
   const n=nodes[selected];

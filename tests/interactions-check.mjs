@@ -45,7 +45,28 @@ await test('03_stammbaeume.html',async p=>{
 });
 await test('04_baum_des_lebens.html',async p=>{
  await p.locator('[data-node="euk"]').click();await expect(p,()=>document.querySelector('#life-title').textContent.includes('Eukaryoten'),'Eukaryote node');
+
+ // Every evolutionary branch must connect exactly to both graphical endpoints.
+ const connected=()=> {
+  const svg=document.querySelector('#life-tree');
+  const getPoint=id=>svg.querySelector('[data-life-node="'+id+'"],[data-life-junction="'+id+'"]');
+  return [...svg.querySelectorAll('[data-life-edge]')].length===5 &&
+    [...svg.querySelectorAll('[data-life-edge]')].every(path=>{
+      const from=getPoint(path.dataset.from),to=getPoint(path.dataset.to);
+      if(!from||!to)return false;
+      const start=path.getPointAtLength(0),end=path.getPointAtLength(path.getTotalLength());
+      const dist=(a,b)=>Math.hypot(a.x-b.cx.baseVal.value,a.y-b.cy.baseVal.value);
+      return dist(start,from)<0.1&&dist(end,to)<0.1;
+    });
+ };
+ await expect(p,connected,'All five LUCA tree branches must touch their nodes');
  await p.locator('#life-connections').click();await expect(p,()=>document.querySelector('#life-connections').getAttribute('aria-pressed')==='true','Horizontal connections');
+ await expect(p,connected,'Edges must remain connected after toggling connections');
+ await expect(p,()=>document.querySelectorAll('#life-tree [data-life-network]').length===2,'Both optional networks render');
+ await p.locator('#life-connections').click();
+ await expect(p,()=>document.querySelectorAll('#life-tree [data-life-network]').length===0,'Toggle hides additional networks');
+ await expect(p,connected,'Tree remains connected when network is hidden');
+
  await p.locator('#life-question button').nth(1).click();await expect(p,()=>document.querySelector('#life-quiz-feedback').dataset.ok==='true','LUCA quiz');
 });
 await test('05_uebergaenge.html',async p=>{
